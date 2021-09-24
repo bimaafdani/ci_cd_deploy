@@ -1,10 +1,25 @@
-all: build run
+# all: build run
 
-test:
-	@echo "Ini test"
+# test:
+# 	@echo "Ini test"
 
-build: test
-	@echo "Hello make"
-	@echo "do something"
-run:
-	@go run main.go
+# build: test
+# 	@echo "Hello make"
+# 	@echo "do something"
+# run:
+# 	@go run main.go
+
+install:
+	go mod tidy
+
+lint:
+	go fmt ./...
+
+test: install
+	go test -v ./...
+
+build: install
+	go build -v .
+
+run: install
+	go run main.go
